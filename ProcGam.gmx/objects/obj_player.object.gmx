@@ -132,10 +132,6 @@ if(STATE != ATTACKING &amp;&amp; STATE != DODGING){
             <kind>1</kind>
             <string>/// Non-Movement Input
 
-// TODO -----------------------
-if(place_meeting(x,y,obj_enemy))
-    currHP--;
-
 
 if(keyboard_check_pressed(ord('X'))){
     var interact = instance_create(x + lengthdir_x(8, direction), y + lengthdir_y(8, direction), obj_interact);
@@ -159,6 +155,7 @@ if(keyboard_check_pressed(vk_shift) &amp;&amp; STATE != DODGING){
     dodgeX = x + lengthdir_x(dodgeDistance, direction);
     dodgeY = y + lengthdir_y(dodgeDistance, direction);
     audio_play_sound(snd_dodge, 10, false);
+    image_index = 0;
 }
 
 if(keyboard_check_pressed(ord('H'))){
@@ -210,12 +207,16 @@ if(STATE == IDLE){
     }
     
 }else if(STATE == DODGING){
+    sprite_index = sp_player_dodge;
+    image_speed = 1 / room_speed * 24;
     if(point_distance(x, y, dodgeX, dodgeY) &gt; 8){
+        invulnerable = true;
         var dir = point_direction(x, y, dodgeX, dodgeY);
         hspeed = lengthdir_x(moveSpeed * 2, dir);
         vspeed = lengthdir_y(moveSpeed * 2, dir);
     }else{
         STATE = IDLE;
+        invulnerable = false;
     }
     
     if(place_meeting(x+hspeed, y+vspeed, obj_collidable)){

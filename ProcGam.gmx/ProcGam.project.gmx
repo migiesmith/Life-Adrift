@@ -50,6 +50,7 @@
     <sprite>sprites\sp_attack</sprite>
     <sprites name="player">
       <sprite>sprites\sp_player_idle</sprite>
+      <sprite>sprites\sp_player_dodge</sprite>
       <sprite>sprites\sp_player_walk</sprite>
       <sprite>sprites\sp_player_attack</sprite>
     </sprites>
@@ -63,6 +64,9 @@
       <sprite>sprites\sp_dirt</sprite>
       <sprite>sprites\sp_portal</sprite>
     </sprites>
+    <sprite>sprites\sp_loot_bush</sprite>
+    <sprite>sprites\sp_blob_attack</sprite>
+    <sprite>sprites\sp_currency</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_grass</background>
@@ -105,8 +109,12 @@
     <object>objects\obj_farmland</object>
     <object>objects\obj_interact</object>
     <object>objects\obj_attack</object>
+    <object>objects\obj_enemy_blob_attack</object>
     <object>objects\obj_screen_shaker</object>
     <object>objects\obj_music_manager</object>
+    <object>objects\obj_loot_bush</object>
+    <object>objects\obj_currency</object>
+    <object>objects\obj_loot</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_home</room>
