@@ -68,29 +68,6 @@ if(roomManager != noone){
     <instance objName="obj_portal" x="320" y="400" name="inst_9F52044C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_spawn" x="320" y="288" name="inst_B2453373" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pather" x="16" y="16" name="inst_E12A424D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_skeleton" x="528" y="144" name="inst_C8A8C7C5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_slime" x="496" y="144" name="inst_8BE5678F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mushroom" x="144" y="208" name="inst_7E42F0E3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mushroom" x="160" y="192" name="inst_7EE8CB40" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mushroom" x="176" y="208" name="inst_60600370" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mushroom" x="144" y="176" name="inst_0A8B4303" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mushroom" x="208" y="176" name="inst_9C5BC992" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mushroom" x="208" y="208" name="inst_A09D9BA5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mushroom" x="144" y="240" name="inst_594C251F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mushroom" x="176" y="240" name="inst_7F7707C3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mushroom" x="208" y="240" name="inst_58F27FE8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mushroom" x="160" y="224" name="inst_239B4F3C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mushroom" x="176" y="176" name="inst_E54C61C2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mushroom" x="192" y="192" name="inst_E8AC4948" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mushroom" x="192" y="224" name="inst_A3DAE9AB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mushroom" x="224" y="192" name="inst_10EBE6E4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mushroom" x="224" y="224" name="inst_4C8583E7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mushroom" x="192" y="256" name="inst_427B3848" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mushroom" x="160" y="256" name="inst_8B08C3DD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mushroom" x="128" y="224" name="inst_43FDF52B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mushroom" x="128" y="192" name="inst_1C29BB38" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mushroom" x="160" y="160" name="inst_7B4CFAED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mushroom" x="192" y="160" name="inst_889DA776" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_farmland" x="480" y="272" name="inst_DB81795B" locked="0" code="" scaleX="5" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_music_manager" x="48" y="16" name="inst_1E851152" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>

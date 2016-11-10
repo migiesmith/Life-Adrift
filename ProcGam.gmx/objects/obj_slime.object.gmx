@@ -127,9 +127,8 @@ if(STATE == IDLE){
     image_speed = 1 / room_speed * 2;
     
 }else if(STATE == ATTACKING){
-    sprite_index = sp_blue_slime;
-    image_index = 1;
-    image_speed = 0;
+    sprite_index = sp_blue_slime_attack;
+    image_index = 0;
     
     if(point_distance(x, y, leapX, leapY) &gt; 8){
         var dir = point_direction(x, y, leapX, leapY);
@@ -138,6 +137,10 @@ if(STATE == IDLE){
     }else{
         STATE = IDLE;
         isBusy = false;
+    }
+    
+    if(place_meeting(x+hspeed, y+vspeed, obj_collidable)){
+        STATE = IDLE;
     }
     
 }
@@ -152,10 +155,11 @@ if(canAttack){
             var dir = point_direction(x, y, player.x, player.y);
             leapX = x + lengthdir_x(dist * 1.5, dir);
             leapY = y + lengthdir_y(dist * 1.5, dir);
-            alarm[0] = room_speed * attackDelay;
+            alarm[0] = room_speed * (attackDelay + random_range(-1, 2));
             canAttack = false;
             // Create Attack Areas
             alarm[1] = room_speed/16;
+            audio_play_sound(snd_slime_attack, 10, false);
         }
     }
 }

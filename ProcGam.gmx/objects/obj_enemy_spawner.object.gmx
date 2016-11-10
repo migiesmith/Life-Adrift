@@ -27,12 +27,48 @@
             <kind>1</kind>
             <string>/// Spawn Enemies
 
-var mobCount = irandom(10) + 5;
+objMobType = obj_slime;
+numOfEnemies = 5;
+randExtra = 10;
+
+alarm[0] = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+// Push away spawned mobs
+var attack = instance_create(x, y + sprite_get_height(sp_pillar_boss_idle) div 4, obj_enemy_blob_attack);    
+attack.image_xscale = 4;
+attack.image_yscale = 4;
+attack.knockback = 32;
+attack.damage = 0; 
+
+var mobCount = irandom(randExtra) + numOfEnemies;
 for(var i = 0; i &lt; mobCount; i++){
-    with(instance_create(x, y, obj_slime)){
-        pushApart(obj_enemy, 32);
+    with(instance_create(x, y, objMobType)){
+        pushApart(obj_mushroom, 32);
     }
 }
+
 </string>
           </argument>
         </arguments>

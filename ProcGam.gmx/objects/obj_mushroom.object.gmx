@@ -35,7 +35,37 @@ isBusy = true;
 
 jumpHeight = -16;
 
-SPAWNING = 100;
+alarm[0] = room_speed;
+
+maxBombTimer = room_speed * 4;
+bombTimer = maxBombTimer + random_range(-room_speed*5,room_speed*5);
+
+bombTint = c_blue;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>event_inherited();
+
+instance_create(x, y, obj_poison_cloud);
 </string>
           </argument>
         </arguments>
@@ -60,6 +90,24 @@ SPAWNING = 100;
             <kind>1</kind>
             <string>event_inherited();
 
+if(bombTimer &lt;= 0){
+    if(bombTint == c_white){
+        bombTint = c_blue;
+        bombTimer = maxBombTimer div 2;
+    }else{
+        bombTint = c_white;
+        bombTimer = maxBombTimer;
+    }
+    tint = bombTint;
+}else{
+    bombTimer -= (1.0 / room_speed * 1000000) / delta_time;
+    if(tint == c_blue &amp;&amp; place_meeting(x, y, obj_player)){
+        currHP = 0;
+    }
+    if(tint != c_red){
+        tint = bombTint;
+    }
+}
 
 if(STATE == IDLE){
     sprite_index = sp_mushroom_idle;
@@ -70,6 +118,7 @@ if(STATE == IDLE){
     if(player != noone){
         if(point_distance(x, y, player.x, player.y) &lt; 32 * 2){
             STATE = SPAWNING;
+            audio_play_sound(snd_jump, 10, false);
             image_index = 0;
         }
     }

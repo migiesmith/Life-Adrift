@@ -39,6 +39,7 @@ IDLE = 0;
 WALKING = 1;
 DODGING = 2;
 ATTACKING = 3;
+SPAWNING = 4;
 
 STATE = IDLE;
 </string>

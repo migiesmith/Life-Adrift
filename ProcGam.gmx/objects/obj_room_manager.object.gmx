@@ -295,7 +295,12 @@ for (var i = 0; i &lt; ds_list_size(walls); i++){
 }
 
 if(!thisRoom[? 'hasCleared']){
-    instance_create(room_width div 2, room_height div 2, obj_enemy_spawner);
+    if(thisRoom[? 'isExit']){
+        instance_create(room_width div 2, room_height div 2, obj_boss_slime);
+    }else{
+        var spawner = instance_create(room_width div 2, room_height div 2, obj_enemy_spawner);
+        spawner.objMobType = choose(obj_slime, obj_mushroom, obj_skeleton);
+    }
 }
 thisRoom[? 'hasCleared'] = true;
 </string>

@@ -23,6 +23,9 @@
       <sound>sound\snd_rm_home</sound>
       <sound>sound\snd_rm_islands</sound>
     </sounds>
+    <sound>sound\snd_jump</sound>
+    <sound>sound\snd_smoke</sound>
+    <sound>sound\snd_slime_attack</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\sp_sprite</sprite>
@@ -38,12 +41,25 @@
         <sprite>sprites\sp_delete_me</sprite>
         <sprite>sprites\sp_skeleton_dodge</sprite>
       </sprites>
-      <sprite>sprites\sp_green_slime</sprite>
-      <sprite>sprites\sp_blue_slime</sprite>
       <sprites name="mushroom">
         <sprite>sprites\sp_mushroom_idle</sprite>
         <sprite>sprites\sp_mushroom_jump</sprite>
         <sprite>sprites\sp_mushroom_walk</sprite>
+        <sprite>sprites\sp_mushroom_bomb</sprite>
+        <sprite>sprites\sp_mushroom_bomb_explode</sprite>
+      </sprites>
+      <sprites name="slime">
+        <sprite>sprites\sp_green_slime</sprite>
+        <sprite>sprites\sp_blue_slime</sprite>
+        <sprite>sprites\sp_blue_slime_attack</sprite>
+        <sprite>sprites\sp_boss_slime_spawn</sprite>
+        <sprite>sprites\sp_boss_slime_idle</sprite>
+        <sprite>sprites\sp_boss_slime_dying</sprite>
+      </sprites>
+      <sprites name="pillarboss">
+        <sprite>sprites\sp_pillar_boss_spawn</sprite>
+        <sprite>sprites\sp_pillar_boss_idle</sprite>
+        <sprite>sprites\sp_pillar_boss_attack</sprite>
       </sprites>
     </sprites>
     <sprite>sprites\sp_interact</sprite>
@@ -67,6 +83,7 @@
     <sprite>sprites\sp_loot_bush</sprite>
     <sprite>sprites\sp_blob_attack</sprite>
     <sprite>sprites\sp_currency</sprite>
+    <sprite>sprites\sp_poison_cloud</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_grass</background>
@@ -99,11 +116,15 @@
     <object>objects\obj_portal</object>
     <object>objects\obj_spawn</object>
     <object>objects\obj_pather</object>
-    <object>objects\obj_enemy_spawner</object>
     <objects name="mobs">
       <object>objects\obj_slime</object>
       <object>objects\obj_skeleton</object>
       <object>objects\obj_mushroom</object>
+      <object>objects\obj_mushroom_bomb</object>
+      <object>objects\obj_pillar_boss</object>
+      <object>objects\obj_poison_cloud</object>
+      <object>objects\obj_enemy_spawner</object>
+      <object>objects\obj_boss_slime</object>
     </objects>
     <object>objects\obj_dirt</object>
     <object>objects\obj_farmland</object>
