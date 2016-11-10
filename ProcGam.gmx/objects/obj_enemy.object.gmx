@@ -137,6 +137,7 @@ if(object_get_name(id) == "obj_slime")
             <string>/// Non-Movement Logic
 
 if(currHP &lt;= 0){
+    audio_play_sound(snd_death, 10, false);
     instance_destroy();
 }
 </string>

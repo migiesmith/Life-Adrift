@@ -54,6 +54,7 @@ image_speed = 1 / room_speed * 5;
 var player = instance_place(x, y, obj_player);
 if(player != noone){
     room_goto(rm_islands);
+    audio_play_sound(snd_portal, 10, false);
 }
 </string>
           </argument>

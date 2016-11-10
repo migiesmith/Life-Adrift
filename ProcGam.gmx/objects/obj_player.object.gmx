@@ -40,6 +40,36 @@ moveSpeed = 3;
 
 dodgeX = 0;
 dodgeY = 0;
+
+alarm[0] = room_speed / 2;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Make stepping sound
+if(STATE == WALKING){
+    audio_play_sound(snd_step0, 10, false);
+}
+
+alarm[0] = room_speed / 2;
 </string>
           </argument>
         </arguments>
@@ -70,6 +100,8 @@ vspeed = (keyboard_check(vk_down) - keyboard_check(vk_up)) * moveSpeed;
 
 if(STATE != ATTACKING &amp;&amp; STATE != DODGING){
     if(hspeed != 0 || vspeed != 0){
+        if(STATE == IDLE)
+            alarm[0] = 1;
         STATE = WALKING;
     }else{
         STATE = IDLE;
@@ -100,6 +132,11 @@ if(STATE != ATTACKING &amp;&amp; STATE != DODGING){
             <kind>1</kind>
             <string>/// Non-Movement Input
 
+// TODO -----------------------
+if(place_meeting(x,y,obj_enemy))
+    currHP--;
+
+
 if(keyboard_check_pressed(ord('X'))){
     var interact = instance_create(x + lengthdir_x(8, direction), y + lengthdir_y(8, direction), obj_interact);
     interact.image_angle = direction;
@@ -121,12 +158,16 @@ if(keyboard_check_pressed(vk_shift) &amp;&amp; STATE != DODGING){
     STATE = DODGING;
     dodgeX = x + lengthdir_x(dodgeDistance, direction);
     dodgeY = y + lengthdir_y(dodgeDistance, direction);
+    audio_play_sound(snd_dodge, 10, false);
 }
 
-if(keyboard_check_pressed(ord('H')) || currHP &lt;= 0){
+if(keyboard_check_pressed(ord('H'))){
     if(room != rm_home){
         room_goto(rm_home);
     }
+}else if(currHP &lt;= 0){
+    room_goto(rm_home);
+    currHP = maxHP;
 }
 
 </string>
@@ -225,6 +266,7 @@ if(hspeed == 0 &amp;&amp; vspeed == 0){
 }
 
 lastDirection = direction;
+
 
 
 </string>

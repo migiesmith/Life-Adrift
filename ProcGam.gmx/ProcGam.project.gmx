@@ -4,7 +4,26 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sounds name="hit">
+      <sound>sound\snd_hit0</sound>
+      <sound>sound\snd_hit1</sound>
+      <sound>sound\snd_hit2</sound>
+    </sounds>
+    <sounds name="pick up">
+      <sound>sound\snd_pick_up0</sound>
+      <sound>sound\snd_pick_up1</sound>
+      <sound>sound\snd_pick_up2</sound>
+    </sounds>
+    <sound>sound\snd_step0</sound>
+    <sound>sound\snd_dodge</sound>
+    <sound>sound\snd_portal</sound>
+    <sound>sound\snd_death</sound>
+    <sounds name="music">
+      <sound>sound\snd_rm_home</sound>
+      <sound>sound\snd_rm_islands</sound>
+    </sounds>
+  </sounds>
   <sprites name="sprites">
     <sprite>sprites\sp_sprite</sprite>
     <sprite>sprites\sp_grass</sprite>
@@ -87,6 +106,7 @@
     <object>objects\obj_interact</object>
     <object>objects\obj_attack</object>
     <object>objects\obj_screen_shaker</object>
+    <object>objects\obj_music_manager</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_home</room>

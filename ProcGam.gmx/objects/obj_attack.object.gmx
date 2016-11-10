@@ -118,6 +118,9 @@ var entity = instance_place(x, y, obj_health_entity);
 while(entity != noone){
 
     instance_create(x, y, obj_screen_shaker);
+    
+    // Play hit sound
+    audio_play_sound(choose(snd_hit0, snd_hit1, snd_hit2), 10, false);
 
     hit[collisions] = entity;
     

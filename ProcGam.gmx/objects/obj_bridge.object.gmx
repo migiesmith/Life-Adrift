@@ -52,7 +52,6 @@ mySurface = createTiledSurface(bg_cobble, 32, 32);
             <kind>1</kind>
             <string>draw_surface(mySurface, bbox_left, bbox_top);
 
-draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, true);
 </string>
           </argument>
         </arguments>
