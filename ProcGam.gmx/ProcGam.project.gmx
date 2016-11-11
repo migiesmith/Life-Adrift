@@ -84,6 +84,7 @@
     <sprite>sprites\sp_blob_attack</sprite>
     <sprite>sprites\sp_currency</sprite>
     <sprite>sprites\sp_poison_cloud</sprite>
+    <sprite>sprites\sp_vine</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_grass</background>
@@ -136,6 +137,7 @@
     <object>objects\obj_loot_bush</object>
     <object>objects\obj_currency</object>
     <object>objects\obj_loot</object>
+    <object>objects\obj_vine</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_home</room>
