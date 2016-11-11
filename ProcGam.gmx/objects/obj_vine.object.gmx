@@ -53,7 +53,81 @@ isBusy = true;
             <kind>1</kind>
             <string>event_inherited();
 
-image_angle -= (1.0 / room_speed * 1000000) / delta_time;
+image_angle += (1.0 / room_speed * 1000000) / delta_time;
+
+var angle = abs(image_angle) % 360;
+if(angle &gt; 90 &amp;&amp; angle &lt; 270)
+    image_yscale = -1;
+else
+    image_yscale = 1;
+
+    
+var ex = x + lengthdir_x(sprite_get_width(sprite_index), angle);
+var ey = y + lengthdir_y(sprite_get_width(sprite_index), angle);
+var player = collision_line(x, y, ex, ey, obj_player, false, true)
+if(player != noone){
+    var vx = x - ex;
+    var vy = y - ey;
+    var dx = -vy / sqrt(abs(vx^2 + vy^2));    
+    var dy = vx / sqrt(abs(vx^2 + vy^2));
+    var length = sqrt(dx*dx + dy*dy);
+    if(length &gt; 0 &amp;&amp; length &lt; 32){
+        player.hspeed += dx/length;
+        player.vspeed += dy/length;
+    }
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+/*
+var angle = abs(image_angle) % 360;
+
+var ex = x + lengthdir_x(sprite_get_width(sprite_index), angle);
+var ey = y + lengthdir_y(sprite_get_width(sprite_index), angle);
+
+
+draw_line(x*2, y*2, ex*2, ey*2);
+
+
+var player = collision_line(x, y, ex, ey, obj_player, false, true)
+if(player != noone){
+    var vx = x - ex;
+    var vy = y - ey;
+    var dx = -vy / sqrt(abs(vx^2 + vy^2));    
+    var dy = vx / sqrt(abs(vx^2 + vy^2));
+    var length = sqrt(dx*dx + dy*dy);
+    dx += player.x;
+    dy += player.y;
+    
+    
+    draw_set_colour(c_red);
+    draw_line(player.x*2, player.y*2, dx*2, dy*2);
+}
+*/
+//draw_rectangle(bbox_left*2,bbox_top*2,bbox_right*2,bbox_bottom*2,true);
+
+
 </string>
           </argument>
         </arguments>
