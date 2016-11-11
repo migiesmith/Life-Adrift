@@ -126,6 +126,7 @@
       <object>objects\obj_poison_cloud</object>
       <object>objects\obj_enemy_spawner</object>
       <object>objects\obj_boss_slime</object>
+      <object>objects\obj_vine_boss</object>
     </objects>
     <object>objects\obj_dirt</object>
     <object>objects\obj_farmland</object>

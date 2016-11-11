@@ -70,10 +70,7 @@ if(roomManager != noone){
     <instance objName="obj_pather" x="16" y="16" name="inst_E12A424D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_farmland" x="480" y="272" name="inst_DB81795B" locked="0" code="" scaleX="5" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_music_manager" x="48" y="16" name="inst_1E851152" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_vine" x="320" y="208" name="inst_EC4ABF0C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_vine" x="320" y="208" name="inst_9FAAC2C0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_vine" x="320" y="208" name="inst_DE6BB3A7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="180"/>
-    <instance objName="obj_vine" x="320" y="208" name="inst_726A39D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
+    <instance objName="obj_vine_boss" x="320" y="208" name="inst_36A8E0CD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_island" x="96" y="315" w="32" h="32" xo="0" yo="64" id="10000099" name="inst_04FF9207" depth="1001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
