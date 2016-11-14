@@ -44,7 +44,7 @@ if(roomManager != noone){
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
   </backgrounds>
   <views>
-    <view visible="-1" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="1280" hport="950" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
+    <view visible="-1" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="1280" hport="960" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
@@ -70,7 +70,15 @@ if(roomManager != noone){
     <instance objName="obj_pather" x="16" y="16" name="inst_E12A424D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_farmland" x="480" y="272" name="inst_DB81795B" locked="0" code="" scaleX="5" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_music_manager" x="48" y="16" name="inst_1E851152" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_vine_boss" x="320" y="208" name="inst_36A8E0CD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_inventory" x="320" y="464" name="inst_C992B5DE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_life_essence" x="432" y="464" name="inst_EC391B85" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_dummy" x="160" y="160" name="inst_394D4803" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_dummy" x="192" y="160" name="inst_8E6E0E08" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_dummy" x="288" y="160" name="inst_8AF90EEB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_dummy" x="192" y="272" name="inst_DCB689DC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_dummy" x="224" y="272" name="inst_4A5F2854" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_dummy" x="192" y="240" name="inst_D1898291" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_dummy" x="224" y="240" name="inst_F43492DC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_island" x="96" y="315" w="32" h="32" xo="0" yo="64" id="10000099" name="inst_04FF9207" depth="1001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -96,6 +104,10 @@ if(roomManager != noone){
     <tile bgName="" x="328" y="464" w="16" h="16" xo="0" yo="0" id="10000251" name="inst_4A5986DE" depth="1001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="" x="316" y="464" w="16" h="16" xo="0" yo="0" id="10000252" name="inst_450D6EA0" depth="1001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="" x="352" y="224" w="16" h="16" xo="0" yo="0" id="10000278" name="inst_43AB75BD" depth="1001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="176" y="240" w="32" h="32" xo="0" yo="0" id="10000304" name="inst_7CE0B88E" depth="1001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="208" y="144" w="32" h="32" xo="32" yo="0" id="10000342" name="inst_F12408DD" depth="1001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="192" y="144" w="32" h="32" xo="32" yo="0" id="10000343" name="inst_63390079" depth="1001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="176" y="144" w="32" h="32" xo="32" yo="0" id="10000345" name="inst_87C33AD4" depth="1001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_grass" x="480" y="256" w="32" h="32" xo="32" yo="32" id="10000018" name="inst_8B5FF2E5" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_grass" x="128" y="256" w="32" h="32" xo="32" yo="32" id="10000020" name="inst_4414D06A" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_grass" x="448" y="224" w="32" h="32" xo="32" yo="32" id="10000024" name="inst_0BBDED73" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -204,6 +216,31 @@ if(roomManager != noone){
     <tile bgName="" x="416" y="272" w="16" h="16" xo="0" yo="0" id="10000301" name="inst_A253BA81" depth="999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="" x="432" y="256" w="16" h="16" xo="0" yo="0" id="10000302" name="inst_748C64CC" depth="999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="" x="432" y="272" w="16" h="16" xo="0" yo="0" id="10000303" name="inst_640EC022" depth="999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="144" y="144" w="32" h="32" xo="0" yo="0" id="10000312" name="inst_DC4E9ED2" depth="999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="272" y="272" w="32" h="32" xo="64" yo="64" id="10000314" name="inst_E5B48A8D" depth="999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="176" y="272" w="32" h="32" xo="32" yo="64" id="10000315" name="inst_AD793D5C" depth="999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="208" y="272" w="32" h="32" xo="32" yo="64" id="10000316" name="inst_76B9DAA1" depth="999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="208" y="240" w="32" h="32" xo="32" yo="32" id="10000318" name="inst_37C28CDD" depth="999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="176" y="240" w="32" h="32" xo="32" yo="32" id="10000319" name="inst_5C8BA260" depth="999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="208" y="208" w="32" h="32" xo="32" yo="32" id="10000320" name="inst_82133401" depth="999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="144" y="272" w="32" h="32" xo="0" yo="64" id="10000323" name="inst_071F34A2" depth="999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="144" y="240" w="32" h="32" xo="0" yo="32" id="10000324" name="inst_0DF5A10D" depth="999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="144" y="208" w="32" h="32" xo="0" yo="32" id="10000325" name="inst_EB50D016" depth="999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="144" y="176" w="32" h="32" xo="0" yo="32" id="10000328" name="inst_268628DD" depth="999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="272" y="240" w="32" h="32" xo="64" yo="32" id="10000329" name="inst_2B9D6C71" depth="999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="272" y="208" w="32" h="32" xo="64" yo="32" id="10000330" name="inst_7B838B46" depth="999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="272" y="176" w="32" h="32" xo="64" yo="32" id="10000331" name="inst_81383CB5" depth="999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="272" y="144" w="32" h="32" xo="64" yo="0" id="10000332" name="inst_F44D7EBB" depth="999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="208" y="144" w="32" h="32" xo="32" yo="0" id="10000333" name="inst_9B3DEA1E" depth="999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="240" y="144" w="32" h="32" xo="32" yo="0" id="10000334" name="inst_DAB9A8F8" depth="999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="176" y="176" w="32" h="32" xo="32" yo="32" id="10000335" name="inst_65BF6091" depth="999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="176" y="208" w="32" h="32" xo="32" yo="32" id="10000336" name="inst_49075ACD" depth="999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="208" y="176" w="32" h="32" xo="32" yo="32" id="10000337" name="inst_FFDD17BE" depth="999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="240" y="176" w="32" h="32" xo="32" yo="32" id="10000338" name="inst_A0F39F63" depth="999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="240" y="208" w="32" h="32" xo="32" yo="32" id="10000339" name="inst_E54028CB" depth="999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="240" y="240" w="32" h="32" xo="32" yo="32" id="10000340" name="inst_4DFE2495" depth="999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="240" y="272" w="32" h="32" xo="32" yo="64" id="10000341" name="inst_0B75929E" depth="999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_cobble" x="176" y="144" w="32" h="32" xo="32" yo="0" id="10000351" name="inst_83C4DAE2" depth="999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_bridge_wall" x="264" y="376" w="16" h="16" xo="16" yo="0" id="10000214" name="inst_B836B6BA" depth="500" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_bridge_wall" x="264" y="436" w="16" h="16" xo="16" yo="0" id="10000216" name="inst_C122F756" depth="500" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_bridge_wall" x="280" y="436" w="16" h="16" xo="16" yo="0" id="10000217" name="inst_2E51E02E" depth="500" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

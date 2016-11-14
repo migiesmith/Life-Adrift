@@ -29,7 +29,7 @@
 
 objMobType = obj_slime;
 numOfEnemies = 5;
-randExtra = 10;
+randExtra = 6;
 
 alarm[0] = 1;
 </string>
@@ -55,19 +55,19 @@ alarm[0] = 1;
           <argument>
             <kind>1</kind>
             <string>
+var mobCount = irandom(randExtra) + numOfEnemies;
+for(var i = 0; i &lt; mobCount; i++){
+    with(instance_create(x, y, objMobType)){
+        pushApart(other.objMobType, 32);
+    }
+}
+
 // Push away spawned mobs
-var attack = instance_create(x, y + sprite_get_height(sp_pillar_boss_idle) div 4, obj_enemy_blob_attack);    
+var attack = instance_create(x, y, obj_enemy_blob_attack);    
 attack.image_xscale = 4;
 attack.image_yscale = 4;
 attack.knockback = 32;
 attack.damage = 0; 
-
-var mobCount = irandom(randExtra) + numOfEnemies;
-for(var i = 0; i &lt; mobCount; i++){
-    with(instance_create(x, y, objMobType)){
-        pushApart(obj_mushroom, 32);
-    }
-}
 
 </string>
           </argument>

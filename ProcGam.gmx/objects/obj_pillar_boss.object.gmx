@@ -32,6 +32,7 @@ initialDepth = -sprite_get_height(sp_pillar_boss_idle) div 4;
 image_speed = 1 / room_speed * 2;
 
 isBusy = true;
+canKnockback = false;
 
 canAttack = true;
 attackDelay = 4;
@@ -44,14 +45,11 @@ y = 0;
 alarm[1] = room_speed * 8;
 
 
-maxHP = 5000;
+maxHP = 1000;
 currHP = maxHP;
 
-for(var i = 0; i &lt; 4; i++){
-vine[0] = instance_create(x, y, obj_vine);
-}
 
-BOSS_STAGE = currHP div (maxHP div 8);
+BOSS_STAGE = currHP div (maxHP div 8) - 1;
 </string>
           </argument>
         </arguments>
@@ -75,7 +73,7 @@ BOSS_STAGE = currHP div (maxHP div 8);
           <argument>
             <kind>1</kind>
             <string>with(solidBase){
-    mp_grid_clear_cell(global.pathingGrid, x div 32, y div 32);
+    removeObjectFromGrid(global.pathingGrid);
     instance_destroy();    
 }
 </string>
@@ -163,8 +161,8 @@ if(STATE == SPAWNING){
     y+=8;
     if(y &gt;= spawnY){
         STATE = IDLE;
-        solidBase = instance_create(x, y + sprite_get_height(sp_pillar_boss_idle) div 4, obj_invisible_wall);
-        mp_grid_add_cell(global.pathingGrid, solidBase.x div 32, solidBase.y div 32);
+        solidBase = instance_create(x, y, obj_invisible_wall);
+        addObjectToGrid(global.pathingGrid, solidBase);
         
         // Spawn mobs
         alarm[0] = 1;
@@ -175,19 +173,21 @@ if(STATE == SPAWNING){
     
     if(image_index &gt;= 1.75 &amp;&amp; image_index &lt;= 2.25){
         // Push away spawned mobs
-        var attack = instance_create(x + 24, y + (sprite_get_height(sp_pillar_boss_idle) div 5) * 2, obj_enemy_blob_attack);    
+        var attack = instance_create(x + sprite_get_width(sp_pillar_boss_idle) div 3, y + sprite_get_height(sp_pillar_boss_idle) div 6, obj_enemy_blob_attack);     
+        attack.image_xscale = 2;
+        attack.image_yscale = 2; 
         attack.knockback = 16;
         attack.damage = 1;
-        attack.ignoreType = obj_enemy;
+        attack.ignoreType = obj_pillar_boss;
         attackSpeed = room_speed / 32;
     }else if(image_index &gt;= 3.75 &amp;&amp; image_index &lt;= 4.25){
         // Push away spawned mobs
-        var attack = instance_create(x - 24, y + (sprite_get_height(sp_pillar_boss_idle) div 5) * 2, obj_enemy_blob_attack);    
+        var attack = instance_create(x - sprite_get_width(sp_pillar_boss_idle) div 3, y + sprite_get_height(sp_pillar_boss_idle) div 6, obj_enemy_blob_attack);    
         attack.image_xscale = 2;
         attack.image_yscale = 2;
         attack.knockback = 16;
         attack.damage = 1;
-        attack.ignoreType = obj_enemy;
+        attack.ignoreType = obj_pillar_boss;
         attackSpeed = room_speed / 32;
     }
     

@@ -28,8 +28,9 @@
             <string>event_inherited();
 
 isBusy = true;
+canKnockback = false;
 
-maxHP = 500;
+maxHP = 100;
 currHP = maxHP;
 
 damage = 4;
@@ -38,6 +39,7 @@ damageTimer = damageDelay;
 
 image_speed = 0;
 
+rotSpeed = 0.5;
 </string>
           </argument>
         </arguments>
@@ -62,7 +64,7 @@ image_speed = 0;
             <kind>1</kind>
             <string>event_inherited();
 
-image_angle += (1.0 / room_speed * 1000000) / delta_time;
+image_angle += (1.0 / room_speed * 1000000) / delta_time * rotSpeed;
 
 var angle = abs(image_angle) % 360;
 if(angle &gt; 90 &amp;&amp; angle &lt; 270)
@@ -70,16 +72,14 @@ if(angle &gt; 90 &amp;&amp; angle &lt; 270)
 else
     image_yscale = 1;
 
-if(((angle / (angle % 22.5)) % 16) div 4 == 1){
-    image_index = 0;
-    tint = c_red;
-}else{
+if((angle + 90) % 180 &lt; 15 || (angle + 90) % 180 &gt; 165){
     image_index = 1;
-    tint = c_white;
+}else{
+    image_index = 0;
 }
     
-var ex = x + lengthdir_x(sprite_get_width(sprite_index), angle);
-var ey = y + lengthdir_y(sprite_get_width(sprite_index), angle);
+var ex = x + lengthdir_x(sprite_get_width(sprite_index)*image_xscale, angle);
+var ey = y + lengthdir_y(sprite_get_width(sprite_index)*image_xscale, angle);
 var player = collision_line(x, y, ex, ey, obj_player, false, true)
 if(player != noone){
     var vx = x - ex;

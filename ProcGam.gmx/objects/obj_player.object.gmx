@@ -33,6 +33,7 @@ dodgeDistance = 96;
 
 goUp = true;
 
+damage = 25;
 
 lastDirection = 0;
 
@@ -42,6 +43,32 @@ dodgeX = x;
 dodgeY = y;
 
 alarm[0] = room_speed / 2;
+
+buffed = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>buffed = false;
+damage = 25;
 </string>
           </argument>
         </arguments>
@@ -134,17 +161,44 @@ if(STATE != ATTACKING &amp;&amp; STATE != DODGING){
 
 
 if(keyboard_check_pressed(ord('X'))){
-    var interact = instance_create(x + lengthdir_x(8, direction), y + lengthdir_y(8, direction), obj_interact);
+    var interact = instance_create(x, y, obj_interact);
     interact.image_angle = direction;
     STATE = IDLE;
     image_index = 1;
+}
+
+if(keyboard_check_pressed(ord('A'))){
+    if(global.currency[0] - 50 &gt;= 0 &amp;&amp; currHP != maxHP){
+        global.currency[0] -= 50;
+        currHP = min(maxHP, currHP + 50);
+    }
+}
+
+if(keyboard_check_pressed(ord('S'))){
+    if(global.buffleBerries - 1 &gt;= 0 &amp;&amp; !buffed){
+        global.buffleBerries--;
+        buffed = true;
+        damage = 50;
+        alarm[1] = room_speed * 10;
+    }
+}
+
+if(keyboard_check_pressed(ord('D'))){
+    var dirt = instance_place(x, y, obj_dirt);
+    if(global.buffleBerrySeeds - 1 &gt;= 0 &amp;&amp; dirt != noone){
+        global.buffleBerries--;        
+        with(dirt){
+            instance_create(dirt.x, dirt.y, obj_loot_bush);
+            instance_destroy();
+        }
+    }
 }
 
 if(keyboard_check_pressed(ord('Z')) &amp;&amp; STATE != ATTACKING){
     var attack = instance_create(x, y, obj_attack);
     attack.user = id;
     attack.image_angle = direction;
-    attack.damage = 25;
+    attack.damage = damage;
     attack.knockback = 32;
     image_index = 0;
     STATE = ATTACKING;
@@ -224,6 +278,11 @@ if(STATE == IDLE){
     }
     
 }
+
+if(buffed){
+    tint = c_blue;
+}
+
 </string>
           </argument>
         </arguments>
@@ -299,6 +358,91 @@ dodgeY = y;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Save Data
+
+ini_open("saveData.ini");
+ini_write_real("Players", "currency0", global.currency[0]);
+ini_write_real("Players", "buffleBerries", global.buffleBerries);
+ini_write_real("Players", "buffleBerrySeeds", global.buffleBerrySeeds);
+
+if(room == rm_home){
+    var count = instance_number(obj_loot_bush);
+    for(var i = 0; i &lt; count; i++){
+        var bush = instance_find(obj_loot_bush, i);
+        ini_write_real("Bush"+string(i), "x", bush.x);
+        ini_write_real("Bush"+string(i), "y", bush.y);
+        ini_write_real("Bush"+string(i), "isGrown", bush.image_index == 3);
+        
+    }
+}
+
+ini_close();
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Load Save Data
+
+ini_open("saveData.ini");
+global.currency[0] = ini_read_real("Players","currency0", 0);
+global.buffleBerries = ini_read_real("Players","buffleBerries", 1);
+global.buffleBerrySeeds = ini_read_real("Players","buffleBerrySeeds", 1);
+
+if(room == rm_home){
+    for(var i = 0; i &lt; 15; i++){
+        if(ini_section_exists("Bush"+string(i))){
+            var xx = ini_read_real("Bush"+string(i),"x", 0);
+            var yy = ini_read_real("Bush"+string(i),"y", 0);
+            var isGrown = ini_read_real("Bush"+string(i),"isGrown", false);
+            var bush = instance_create(xx, yy, obj_loot_bush);
+            if(isGrown){
+                bush.image_index = 2;
+                bush.alarm[0] = 1;
+            }
+        }
+    }
+}
+
+ini_close();
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="8" enumb="64">
       <action>
@@ -318,9 +462,6 @@ dodgeY = y;
           <argument>
             <kind>1</kind>
             <string>
-//draw_sprite_ext(sp_player_health, 0, 0, 0, 2, 2, 0, c_white, 1);
-
-
 var hpPercent = currHP / maxHP;
 
 // Draw health loss
@@ -347,7 +488,6 @@ var joinStart = 0;
 if(sprite_get_width(sp_player_health) * hpPercent * 2 &lt; sprite_get_width(sp_player_health_join)*2){
     joinStart = sprite_get_width(sp_player_health_join)*2 - sprite_get_width(sp_player_health) * hpPercent;
 }
-
 var joinEnd = sprite_get_width(sp_player_health_join);
 if(sprite_get_width(sp_player_health) * hpPercent + sprite_get_width(sp_player_health_join) / 2 &gt; sprite_get_width(sp_player_health) - 8){
     joinEnd = -(sprite_get_width(sp_player_health) * hpPercent + sprite_get_width(sp_player_health_join) / 2 - (sprite_get_width(sp_player_health) - 8));
@@ -360,6 +500,35 @@ draw_sprite_part_ext(sp_player_health_join, joinIndex,
                      c_white, 1
                      );
                
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw Controls
+
+draw_set_colour(c_black);
+draw_set_halign(fa_left);
+draw_text(0, (view_hport * 0.92) div 1, "Attack: Z");
+draw_text(0, (view_hport * 0.94) div 1, "Use: X");
+draw_text(0, (view_hport * 0.96) div 1, "Dodge: SHIFT");
+draw_text(0, (view_hport * 0.98) div 1, "Movement: Arrow Keys");
 </string>
           </argument>
         </arguments>

@@ -62,7 +62,7 @@ if(interact != noone){
     if(dx + 8 &lt; image_xscale * 16 &amp;&amp; dy + 8 &lt; image_yscale * 16){
         var newDirt = instance_create(bbox_left + dx + 8, bbox_top + dy + 8, obj_dirt);
         with(newDirt){
-            if(instance_place(x,y,obj_dirt)){
+            if(instance_place(x, y, obj_dirt) || instance_place(x, y, obj_loot_bush)){
                 instance_destroy();
             }
         }

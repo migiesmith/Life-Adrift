@@ -131,6 +131,11 @@
     <instance objName="obj_room_change" x="320" y="464" name="inst_E6D06713" locked="0" code="roomXDelta = 0;&#xA;roomYDelta = 1;&#xA;" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pather" x="528" y="464" name="inst_0C9415EC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_music_manager" x="480" y="464" name="inst_3BAEF4D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bridge_block" x="320" y="384" name="inst_B1A66317" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bridge_block" x="320" y="80" name="inst_E25D2221" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bridge_block" x="512" y="224" name="inst_175F10F6" locked="0" code="sprite_index = sp_bridge_blockV;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bridge_block" x="128" y="224" name="inst_2C6E478B" locked="0" code="sprite_index = sp_bridge_blockV;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_home_button" x="608" y="448" name="inst_879687A1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="&lt;undefined&gt;" x="256" y="0" w="16" h="16" xo="0" yo="0" id="10000001" name="inst_7FC2EED5" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

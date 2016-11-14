@@ -33,6 +33,12 @@ moveSpeed = 2;
 
 dodgeDistance = 64;
 
+avoidType = obj_player;
+
+minDist = 64;
+
+attackDelay = room_speed * 2;
+attackTimer = attackDelay;
 </string>
           </argument>
         </arguments>
@@ -62,12 +68,24 @@ vspeed = 0;
 
 var player = instance_find(obj_player, 0);
 if(player != noone){
-    if(point_distance(x, y, player.x, player.y) &lt; 32 * 2 &amp;&amp; STATE != DODGING &amp;&amp; player.STATE == ATTACKING){
+    var dist = point_distance(x, y, player.x, player.y);
+    if(((dist &lt;= 32) || (player.STATE == ATTACKING &amp;&amp; dist &lt; 64)) &amp;&amp; STATE != DODGING){
         STATE = DODGING;
         image_index = 0;
     }
 }
 
+// Early State Check
+if(STATE == IDLE){    
+    attackTimer -= (1.0 / room_speed * 1000000) / delta_time;
+    if(attackTimer &lt;= 0){
+        STATE = DODGING;
+        image_index = 0;
+        attackTimer = attackDelay * random_range(0.75, 1.25);
+    }
+}
+
+// State Check
 if(STATE == IDLE){
     sprite_index = sp_skeleton_idle;
     image_speed = 1 / room_speed * 2;
@@ -78,13 +96,13 @@ if(STATE == IDLE){
     sprite_index = sp_skeleton_dodge;
     image_speed = 1 / room_speed * 6;
     if(image_index &gt;= image_number - 0.5){
-        STATE = IDLE;
+        STATE = ATTACKING;
         isBusy = false;
         hspeed = 0;
     }else{
         var mvSpeed = max(floor(image_index - 1) / image_number, 0);
         if(mvSpeed != 0){
-            var dir = point_direction(x, y, player.x, player.y);    
+            var dir = point_direction(x, y, player.x, player.y) + random_range(-10,10);    
             hspeed = -lengthdir_x(dodgeDistance * mvSpeed * image_speed, dir);
             vspeed = -lengthdir_y(dodgeDistance * mvSpeed * image_speed, dir);
         }
@@ -94,6 +112,22 @@ if(STATE == IDLE){
     sprite_index = sp_skeleton_walk;
     image_speed = 1 / room_speed * 6;
     
+}else if(STATE == ATTACKING){
+    
+    var player = instance_find(obj_player, 0);
+    if(player != noone){
+        if(point_distance(x, y, player.x, player.y) &gt; 32){
+            var dir = point_direction(x, y, player.x, player.y);
+            var orb = instance_create(x, y, obj_vine_orb);
+            orb.image_xscale = 0.5;
+            orb.image_yscale = 0.5;
+            orb.user = id;
+            orb.ignoreType = obj_enemy;
+            orb.moveDir = dir + random_range(-5,5);
+            orb.childCount = 1;
+        }
+    }
+    STATE = IDLE;
 }
 
 if (place_meeting(x+hspeed,y,obj_collidable)) hspeed=0;

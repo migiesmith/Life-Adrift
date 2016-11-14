@@ -114,31 +114,40 @@ if(user != noone){
     instance_deactivate_object(user);
 }
 
+for(var i = 0; i &lt; collisions; i++){
+    instance_deactivate_object(hit[i]);
+}
+
 var entity = instance_place(x, y, obj_health_entity);
 while(entity != noone){
 
-    instance_create(x, y, obj_screen_shaker);
     
-    // Play hit sound
-    audio_play_sound(choose(snd_hit0, snd_hit1, snd_hit2), 10, false);
-
     hit[collisions] = entity;
     
-    entity.currHP -= damage;
-    with(entity){
-        tint = c_red;
-        tintTimer = room_speed/4;
-        var dir = point_direction(x, y, other.x, other.y);
-        var dHSpeed = -lengthdir_x(other.knockback, dir);
-        var dVSpeed = -lengthdir_y(other.knockback, dir);
-        while(place_meeting(x+dHSpeed,y,obj_collidable) &amp;&amp; dHSpeed &gt; 0.001) dHSpeed *= 0.5;
-        while(place_meeting(x,y+dVSpeed,obj_collidable) &amp;&amp; dVSpeed &gt; 0.001) dVSpeed *= 0.5;
+    if(!entity.invulnerable){
+        // Play hit sound
+        audio_play_sound(choose(snd_hit0, snd_hit1, snd_hit2), 10, false);
+        instance_create(x, y, obj_screen_shaker);
+    
         
-        hspeed += dHSpeed;
-        vspeed += dVSpeed;
-        
-        if (place_meeting(x+hspeed,y,obj_collidable)) hspeed=0;
-        if (place_meeting(x,y+vspeed,obj_collidable)) vspeed=0;
+        entity.currHP -= damage;
+        with(entity){
+            tint = c_red;
+            tintTimer = room_speed/4;
+            if(canKnockback){
+                var dir = point_direction(x, y, other.x, other.y);
+                var dHSpeed = -lengthdir_x(other.knockback, dir);
+                var dVSpeed = -lengthdir_y(other.knockback, dir);
+                while(place_meeting(x+dHSpeed,y,obj_collidable) &amp;&amp; dHSpeed &gt; 0.001) dHSpeed *= 0.5;
+                while(place_meeting(x,y+dVSpeed,obj_collidable) &amp;&amp; dVSpeed &gt; 0.001) dVSpeed *= 0.5;
+                
+                hspeed += dHSpeed;
+                vspeed += dVSpeed;
+                
+                if (place_meeting(x+hspeed,y,obj_collidable)) hspeed=0;
+                if (place_meeting(x,y+vspeed,obj_collidable)) vspeed=0;
+            }
+        }
     }
     instance_deactivate_object(entity);
     collisions++;

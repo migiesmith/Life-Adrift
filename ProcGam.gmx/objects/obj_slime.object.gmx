@@ -63,8 +63,8 @@ attackDelay = 4;
             <string>
 var attack = instance_create(x, y, obj_enemy_blob_attack);
 attack.ignoreType = obj_enemy;
-attack.knockback = 32;
-attack.damage = 10;
+attack.knockback = 16;
+attack.damage = 2;
 
 if(STATE == ATTACKING)
     alarm[1] = room_speed/32;

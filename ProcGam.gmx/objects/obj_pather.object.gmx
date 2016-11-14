@@ -2,7 +2,7 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -26,10 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>globalvar pathingGrid;
-pathingGrid = mp_grid_create(0, 0, room_width / 32, room_height / 32, 32, 32);
+pathingGrid = mp_grid_create(0, 0, room_width / PATH_GRID_SIZE, room_height / PATH_GRID_SIZE, PATH_GRID_SIZE, PATH_GRID_SIZE);
 mp_grid_add_instances(pathingGrid, obj_invisible_wall, false);
 
-DEBUG = false;
+DEBUG = true;
 </string>
           </argument>
         </arguments>

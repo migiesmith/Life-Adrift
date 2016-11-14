@@ -38,11 +38,16 @@ path = path_add();
 
 moveSpeed = 2;
 
+dropsLoot = true;
 
 image_index = random(image_number);
 
 lastX = x;
 lastY = y;
+
+avoidType = obj_enemy;
+
+minDist = 8;
 </string>
           </argument>
         </arguments>
@@ -96,7 +101,8 @@ vspeed = 0;
 
 var player = instance_find(obj_player, 0);
 if(player != noone){
-    if(point_distance(x, y, player.x, player.y) &lt; 32 * 6 &amp;&amp; !isBusy){
+    var dist = point_distance(x, y, player.x, player.y);
+    if(dist &lt; 32 * 6 &amp;&amp; dist &gt; minDist &amp;&amp; !isBusy){
         if(isPathing){
             if(pathPos == path_get_number(path)){
                 isPathing = false;
@@ -111,13 +117,15 @@ if(player != noone){
                     image_xscale = -1;
                 }
                 STATE = WALKING;
-                if(lastX == x &amp;&amp; lastY == y){
-                    mp_potential_step(pathEndX, pathEndY, moveSpeed, false);
-                }else{
-                    mp_potential_step_object(pathEndX, pathEndY, moveSpeed, obj_enemy);
-                }
-                lastX = x;
-                lastY = y;
+                //if(lastX == x &amp;&amp; lastY == y){
+                //    lastX = x;
+                //    lastY = y;
+                //    mp_potential_step(pathEndX, pathEndY, moveSpeed, false);
+                //}else{
+                //    lastX = x;
+                //    lastY = y;
+                mp_potential_step_object(pathEndX, pathEndY, moveSpeed, avoidType);
+                //}
             }
             pathPos++;
         }else{
@@ -126,6 +134,8 @@ if(player != noone){
         }
     }else{
         isPathing = false;
+        if(!isBusy)
+            STATE = IDLE;
         pathPos = 1;
     }
 }
@@ -161,7 +171,8 @@ if(object_get_name(id) == "obj_slime")
 
 if(currHP &lt;= 0){
     audio_play_sound(snd_death, 10, false);
-    instance_create(x, y, obj_loot);
+    if(dropsLoot)
+        instance_create(x, y, obj_loot);
     alarm[5] = 1;
 }
 </string>

@@ -14,6 +14,13 @@ if(bridgeGround != noone){
     }
 }
 
+var bridgeBlock = instance_nearest(x,y,obj_bridge_block);
+if(bridgeBlock != noone){
+    with(bridgeBlock){
+        instance_destroy();
+    }
+}
+
 var roomChanger = instance_place(x,y,obj_room_change);
 if(roomChanger != noone){
     with(roomChanger){

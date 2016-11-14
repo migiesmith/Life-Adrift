@@ -26,8 +26,11 @@
     <sound>sound\snd_jump</sound>
     <sound>sound\snd_smoke</sound>
     <sound>sound\snd_slime_attack</sound>
+    <sound>sound\snd_vine_orb</sound>
   </sounds>
   <sprites name="sprites">
+    <sprite>sprites\sp_attack</sprite>
+    <sprite>sprites\sp_interact</sprite>
     <sprite>sprites\sp_sprite</sprite>
     <sprite>sprites\sp_grass</sprite>
     <sprite>sprites\sp_wall</sprite>
@@ -61,9 +64,13 @@
         <sprite>sprites\sp_pillar_boss_idle</sprite>
         <sprite>sprites\sp_pillar_boss_attack</sprite>
       </sprites>
+      <sprites name="vineboss">
+        <sprite>sprites\sp_vine_boss</sprite>
+        <sprite>sprites\sp_vine_orb</sprite>
+        <sprite>sprites\sp_vine</sprite>
+        <sprite>sprites\a</sprite>
+      </sprites>
     </sprites>
-    <sprite>sprites\sp_interact</sprite>
-    <sprite>sprites\sp_attack</sprite>
     <sprites name="player">
       <sprite>sprites\sp_player_idle</sprite>
       <sprite>sprites\sp_player_dodge</sprite>
@@ -83,8 +90,19 @@
     <sprite>sprites\sp_loot_bush</sprite>
     <sprite>sprites\sp_blob_attack</sprite>
     <sprite>sprites\sp_currency</sprite>
+    <sprite>sprites\sp_buffleberry_seed</sprite>
     <sprite>sprites\sp_poison_cloud</sprite>
-    <sprite>sprites\sp_vine</sprite>
+    <sprite>sprites\sp_bridge_blockH</sprite>
+    <sprite>sprites\sp_bridge_blockV</sprite>
+    <sprite>sprites\sp_home_icon</sprite>
+    <sprite>sprites\sp_inventory</sprite>
+    <sprites name="inventory">
+      <sprite>sprites\sp_buffleberry</sprite>
+      <sprite>sprites\sp_life_flask</sprite>
+      <sprite>sprites\sp_hoe</sprite>
+    </sprites>
+    <sprite>sprites\sp_life_essence</sprite>
+    <sprite>sprites\sp_dummy</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_grass</background>
@@ -99,6 +117,8 @@
     <script>scripts\createTiledSurface.gml</script>
     <script>scripts\canGetPath.gml</script>
     <script>scripts\pushApart.gml</script>
+    <script>scripts\addObjectToGrid.gml</script>
+    <script>scripts\removeObjectFromGrid.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>
@@ -111,9 +131,7 @@
     <object>objects\obj_grass</object>
     <object>objects\obj_invisible_wall</object>
     <object>objects\obj_bridge</object>
-    <object>objects\obj_room_manager</object>
     <object>objects\obj_bridge_wall</object>
-    <object>objects\obj_room_change</object>
     <object>objects\obj_portal</object>
     <object>objects\obj_spawn</object>
     <object>objects\obj_pather</object>
@@ -121,29 +139,55 @@
       <object>objects\obj_slime</object>
       <object>objects\obj_skeleton</object>
       <object>objects\obj_mushroom</object>
-      <object>objects\obj_mushroom_bomb</object>
-      <object>objects\obj_pillar_boss</object>
       <object>objects\obj_poison_cloud</object>
+      <objects name="vine_boss">
+        <object>objects\obj_vine_orb</object>
+        <object>objects\obj_vine_boss</object>
+        <object>objects\obj_vine</object>
+      </objects>
+      <objects name="pillar_boss">
+        <object>objects\obj_pillar_boss</object>
+        <object>objects\obj_boss_slime</object>
+        <object>objects\obj_mushroom_bomb</object>
+      </objects>
       <object>objects\obj_enemy_spawner</object>
-      <object>objects\obj_boss_slime</object>
-      <object>objects\obj_vine_boss</object>
     </objects>
     <object>objects\obj_dirt</object>
     <object>objects\obj_farmland</object>
-    <object>objects\obj_interact</object>
-    <object>objects\obj_attack</object>
-    <object>objects\obj_enemy_blob_attack</object>
-    <object>objects\obj_screen_shaker</object>
-    <object>objects\obj_music_manager</object>
-    <object>objects\obj_loot_bush</object>
-    <object>objects\obj_currency</object>
-    <object>objects\obj_loot</object>
-    <object>objects\obj_vine</object>
+    <objects name="utility">
+      <object>objects\obj_enemy_blob_attack</object>
+      <object>objects\obj_screen_shaker</object>
+      <object>objects\obj_music_manager</object>
+      <object>objects\obj_attack</object>
+      <object>objects\obj_interact</object>
+      <object>objects\obj_room_manager</object>
+      <object>objects\obj_room_change</object>
+    </objects>
+    <object>objects\obj_bridge_block</object>
+    <objects name="gui">
+      <objects name="inventory">
+        <object>objects\obj_inventory</object>
+        <object>objects\obj_inv_slot</object>
+        <object>objects\obj_life_essence</object>
+      </objects>
+      <object>objects\obj_home_button</object>
+    </objects>
+    <objects name="loot">
+      <object>objects\obj_loot</object>
+      <object>objects\obj_currency</object>
+      <object>objects\obj_buffleberry_seed</object>
+      <object>objects\obj_buffle_berry</object>
+      <object>objects\obj_loot_bush</object>
+    </objects>
+    <object>objects\obj_dummy</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_home</room>
     <room>rooms\rm_islands</room>
   </rooms>
+  <constants number="1">
+    <constant name="PATH_GRID_SIZE">16</constant>
+  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>

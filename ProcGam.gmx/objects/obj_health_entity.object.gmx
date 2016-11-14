@@ -33,7 +33,7 @@ tintTimer = room_speed/4;
 maxHP = 100;
 currHP = maxHP;
 invulnerable = false;
-
+canKnockback = true;
 
 IDLE = 0;
 WALKING = 1;

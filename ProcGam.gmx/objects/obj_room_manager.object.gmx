@@ -94,7 +94,6 @@ var dir = irandom(3);
 var xx = level_width div 2;
 var yy = level_height div 2;
 var r = rooms[xx, yy];
-r[? 'canEnter'] = true;
 
 for(var i = 0; i &lt; steps; i++){
     if(irandom(100) &lt; 50){
@@ -196,6 +195,7 @@ entrance[? 'hasCleared'] = true;
           <argument>
             <kind>1</kind>
             <string>
+
 if(transitionTimer &gt; 0){
     transitionTimer -= transitionDuration * transitionRate;
     
@@ -203,13 +203,13 @@ if(transitionTimer &gt; 0){
         if(!nextRoom[? 'entering']){ // if not entering
             player = nextRoom[? 'player'];
             if(nextRoom[? 'dx'] == 1){ // Right
-                player.x = room_width * 0.1;
+                player.x = room_width * 0.25;
             }else if(nextRoom[? 'dy'] == 1){ // Down
-                player.y = room_height * 0.1;
+                player.y = room_height * 0.25;
             }else if(nextRoom[? 'dx'] == -1){ // Left
-                player.x = room_width * 0.9;
+                player.x = room_width * 0.75;
             }else if(nextRoom[? 'dy'] == -1){ // Up
-                player.y = room_height * 0.9;
+                player.y = room_height * 0.75;
             }
             currRX += nextRoom[? 'dx'];
             currRY += nextRoom[? 'dy'];
@@ -223,6 +223,23 @@ if(transitionTimer &gt; 0){
     transitionTimer = transitionDuration;
 }
 
+var thisRoom = rooms[currRX, currRY];
+if(!removedBlocks &amp;&amp; instance_number(obj_enemy) &lt;= 0){
+    thisRoom[? 'hasCleared'] = true;
+    
+    // Create a list of blocks
+    var blocks = ds_list_create();
+    for (var i = 0; i &lt; instance_number(obj_bridge_block); i++){
+        ds_list_add(blocks, instance_find(obj_bridge_block,i));
+    }
+    for (var i = 0; i &lt; ds_list_size(blocks); i++){    
+        with(blocks[|i]){
+            instance_destroy();
+        }
+    }
+    
+    removedBlocks = true;
+}
 </string>
           </argument>
         </arguments>
@@ -250,9 +267,10 @@ var thisRoom = rooms[currRX, currRY];
 thisRoom[? 'hasVisited'] = true;
 var right = thisRoom[? 'right'], down = thisRoom[? 'down'], left = thisRoom[? 'left'], up = thisRoom[? 'up'];
 
-var walls = ds_list_create();
+removedBlocks = false;
 
 // Create a list of walls
+var walls = ds_list_create();
 for (var i = 0; i &lt; instance_number(obj_invisible_wall); i++){
     ds_list_add(walls, instance_find(obj_invisible_wall,i));
 }
@@ -296,7 +314,7 @@ for (var i = 0; i &lt; ds_list_size(walls); i++){
 
 if(!thisRoom[? 'hasCleared']){
     if(thisRoom[? 'isExit']){
-        instance_create(room_width div 2, room_height div 2, obj_boss_slime);
+        instance_create(room_width div 2, room_height div 2, choose(obj_vine_boss, obj_boss_slime));
     }else{
         var spawner = instance_create(room_width div 2, room_height div 2, obj_enemy_spawner);
         spawner.objMobType = choose(obj_slime, obj_mushroom, obj_skeleton);

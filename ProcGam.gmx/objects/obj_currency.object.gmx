@@ -8,6 +8,31 @@
   <parentName>obj_entity</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>event_inherited();
+
+currencyGain = 2;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -33,7 +58,9 @@ hspeed = 0;
 var player = instance_place(x, y, obj_player);
 if(player != noone){
     audio_play_sound(choose(snd_pick_up0, snd_pick_up1, snd_pick_up2), 10, false);
-    player.currHP = min(player.currHP + 2, player.maxHP);
+    var oldHP = player.currHP;
+    player.currHP = min(player.currHP + currencyGain, player.maxHP);
+    global.currency[0] += max(currencyGain - (player.currHP - oldHP), 0); 
     instance_destroy(); // TODO
 }else{
     player = instance_find(obj_player, 0);
