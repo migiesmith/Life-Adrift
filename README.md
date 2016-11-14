@@ -1,6 +1,7 @@
+![Alt text](https://github.com/migiesmith/Life-Adrift/blob/master/Progress%20Images/cover.png)
 # Life Adrift
 
-My submission for the 2016 itch.io Procedural Jam. 
+My submission for the 2016 itch.io Procedural Jam. migiesmith.itch.io/life-adrift
 
 ####Contains:
 * Procedurally generated levels
@@ -34,3 +35,8 @@ S to eat a buffleberry (2x damage).
 X to interact.
 
 D to plant buffle berry seeds
+
+
+####Additional Screenshots
+![Alt text](https://github.com/migiesmith/Life-Adrift/blob/master/Progress%20Images/screen1.png)
+![Alt text](https://github.com/migiesmith/Life-Adrift/blob/master/Progress%20Images/screen0.png)
