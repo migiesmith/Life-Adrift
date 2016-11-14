@@ -17,12 +17,20 @@ Everything but the sound and music was created by me. The sound was generated us
 ####Controls
 
 #####Combat
+
 Arrows Keys to move.
+
 Z to attack.
+
 SHIFT to dodge.
+
 A to heal (costs 50 life essence).
+
 S to eat a buffleberry (2x damage).
 
+
 #####Farming
+
 X to interact.
+
 D to plant buffle berry seeds
