@@ -34,7 +34,7 @@ S to eat a buffleberry (2x damage).
 
 X to interact.
 
-D to plant buffle berry seeds
+D to plant buffleberry seeds
 
 
 ####Additional Screenshots
