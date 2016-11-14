@@ -413,12 +413,6 @@ for (var i = 0; i &lt; instance_number(obj_player); i++){
     draw_rectangle(xx, yy, xx+1, yy+1 , false);
         
 }
-
-var r = rooms[currRX, currRY];
-if(r[? 'isExit']){
-    draw_text(0, 0, "Exit");
-}
-
 </string>
           </argument>
         </arguments>

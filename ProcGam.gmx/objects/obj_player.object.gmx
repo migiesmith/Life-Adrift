@@ -382,6 +382,9 @@ ini_write_real("Players", "buffleBerries", global.buffleBerries);
 ini_write_real("Players", "buffleBerrySeeds", global.buffleBerrySeeds);
 
 if(room == rm_home){
+    for(var i = 0; i &lt; 15; i++)
+        ini_section_delete("Bush"+string(i));
+        
     var count = instance_number(obj_loot_bush);
     for(var i = 0; i &lt; count; i++){
         var bush = instance_find(obj_loot_bush, i);

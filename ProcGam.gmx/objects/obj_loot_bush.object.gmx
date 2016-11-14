@@ -38,6 +38,8 @@ canKnockback = false;
 
 maxHP = 25;
 currHP = maxHP;
+
+show_message(string(x)+", "+string(y));
 </string>
           </argument>
         </arguments>
