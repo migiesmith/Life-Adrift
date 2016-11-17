@@ -186,7 +186,7 @@ if(keyboard_check_pressed(ord('S'))){
 if(keyboard_check_pressed(ord('D'))){
     var dirt = instance_place(x, y, obj_dirt);
     if(global.buffleBerrySeeds - 1 &gt;= 0 &amp;&amp; dirt != noone){
-        global.buffleBerries--;        
+        global.buffleBerrySeeds--;        
         with(dirt){
             instance_create(dirt.x, dirt.y, obj_loot_bush);
             instance_destroy();
@@ -322,13 +322,16 @@ if(hspeed &gt; 0){
 }
 
 if(hspeed == 0 &amp;&amp; vspeed == 0){
-    direction = lastDirection;
+    var xx = (keyboard_check(vk_right) - keyboard_check(vk_left));
+    var yy = (keyboard_check(vk_down) - keyboard_check(vk_up));
+    if(xx == 0 &amp;&amp; yy == 0){
+        direction = lastDirection;
+    }else{
+        direction = point_direction(0, 0, xx, yy);
+    }
 }
 
 lastDirection = direction;
-
-
-
 </string>
           </argument>
         </arguments>
